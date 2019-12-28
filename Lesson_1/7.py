@@ -4,3 +4,36 @@
 треугольник существует, то определить, является ли он
 разносторонним, равнобедренным или равносторонним.
 """
+
+
+def user_input():
+    """Принимает вводимое значение"""
+    lnt = input('--> ').strip()
+    try:
+        if ',' in lnt:
+            lnt = lnt.replace(',', '.')
+        lnt = abs(float(lnt))
+        return lnt
+    except ValueError:
+        print('Введено ошибочное значение.')
+        return None
+
+
+print('Определение типа треугольника по длинам сторон.')
+print('Введите длину первой стороны:')
+A = user_input()
+print('Введите длину второй стороны:')
+B = user_input()
+print('Введите длину третьей стороны:')
+C = user_input()
+
+if (A is None) or (B is None) or (C is None):
+    print('Ошибка в данных.')
+elif A >= B + C or B >= A + C or C >= A + B:
+    print('Треугольник не существует.')
+elif A == B == C:
+    print('Трекгольник равносторонний.')
+elif A == B or B == C or A == C:
+    print('Треугольник равнобедренный.')
+else:
+    print('Треугольник разносторонний.')
